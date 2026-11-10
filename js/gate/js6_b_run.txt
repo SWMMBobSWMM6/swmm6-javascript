@@ -1,0 +1,11 @@
+2026-11-10T02:09:23  nice -n 10 python3 gate.py js6_b /home/claude/swmm6-ports/js/runswmm6_saves.sh --ids /dev/shm/js6_b_onw551so.txt -j 1 --timeout 1800 --prune --resume
+js6_b: 48 models  PASS 48
+2026-11-10T02:17:27  nice -n 10 python3 gate.py js6_b /home/claude/swmm6-ports/js/runswmm6_saves.sh --ids /dev/shm/js6_b_tpl2me2l.txt -j 1 --timeout 1800 --prune --resume
+js6_b: resuming, 0 models already done, 54 to run
+js6_b: 54 models  PASS 54
+2026-11-10T02:22:27  nice -n 10 python3 gate.py js6_b /home/claude/swmm6-ports/js/runswmm6_saves.sh --ids /dev/shm/js6_b_1yxtq0gx.txt -j 1 --timeout 1800 --prune --resume
+js6_b: resuming, 0 models already done, 59 to run
+js6_b: 59 models  PASS 59
+2026-11-10T02:30:20  nice -n 10 python3 gate.py js6_b /home/claude/swmm6-ports/js/runswmm6_saves.sh --ids /home/claude/swmm6-ports/js/gate/ids_corpus_b.txt -j 1 --timeout 1800 --prune --resume
+js6_b: resuming, 161 models already done, 0 to run
+js6_b: 161 models  PASS 161

@@ -1,0 +1,22 @@
+#!/bin/bash
+# runswmm6 - run the JavaScript SWMM6 engine as the C++ command line runs:
+#   runswmm6 <input.inp> <report.rpt> [output.out]
+# Node runs the sources as they are (src/main.js, src/cpp, gen/engine.js; ES modules, package.json "type": "module").
+# As the TypeScript port's launcher: Node gets a large heap (--max-old-space-size, MB) and a large stack: V8's limit
+# (--stack-size, KB) sits inside the process's stack, which is raised first (ulimit -s) to the V8 limit plus a margin
+# for native frames, since a --stack-size beyond the real stack crashes instead of throwing. The engine recurses
+# deeply on the biggest models.
+#   SWMM6_JS_HEAP_MB   heap limit in MB (default 4096)
+#   SWMM6_JS_STACK_MB  JavaScript stack in MB (default 512; less when the hard stack limit is lower)
+# Written by Claude (Anthropic) for Robert Dickinson's SWMM6 ports; see README.md.
+here=$(cd "$(dirname "$(readlink -f "$0")")" && pwd)
+heap=${SWMM6_JS_HEAP_MB:-4096}
+stack=${SWMM6_JS_STACK_MB:-512}
+margin=64
+hard=$(ulimit -Hs)
+if [ "$hard" != unlimited ] && [ $(( (stack + margin) * 1024 )) -gt "$hard" ]; then
+	stack=$(( hard / 1024 - margin ))
+	[ "$stack" -lt 1 ] && stack=1
+fi
+ulimit -s $(( (stack + margin) * 1024 )) 2>/dev/null || stack=4
+exec node --max-old-space-size="$heap" --stack-size=$(( stack * 1024 )) "$here/src/main.js" "$@"

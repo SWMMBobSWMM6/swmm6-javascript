@@ -1,0 +1,8 @@
+{
+  "name": "swmm6-javascript",
+  "version": "6.0.0-alpha.4",
+  "description": "The SWMM6 engine (OpenSWMM 6) translated C++ -> C# -> JavaScript; run by runswmm6",
+  "license": "SEE LICENSE IN README.md",
+  "private": true,
+  "type": "module"
+}

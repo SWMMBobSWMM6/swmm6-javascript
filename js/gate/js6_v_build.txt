@@ -1,0 +1,18 @@
+== clean copy of ed2c437 in /dev/shm/js6_v/repo
+== the translator (tools/cs2x/build_js.sh) and the engine, regenerated from cs/gen
+wrote engine.js (6268 KB), 1257 types, 0 TODO kinds, 0 TODO sites, 621 runtime names
+engine js/gen/engine.js: byte-identical to the commit (1 files, 178665 lines)
+manifest, notes and TODO list (js/cs2js_*.txt): byte-identical to the commit
+== the runtime, written again from ts/src (js/make_runtime.sh)
+wrote 18 files into /dev/shm/js6_v/regen/src
+runtime js/src (the four math files aside, compared below): byte-identical to the commit (22 files, 15931 lines)
+== the math: glibc 2.39 compiled to GIMPLE in /dev/shm/js6_v/glibm, then js/make_glibm.sh
+translated ['exp', 'log', 'pow_exact', 'sin', 'cos', 'tan', 'ieee754_asin', 'ieee754_acos', 'atan', 'ieee754_log10'] tables 25
+translated ['expm1_t', 'sinh_t', 'cosh_t', 'tanh_t', 'log1p_t', 'log2_t', 'atan2_t', 'cbrt_t', 'hypot_t'] tables 8
+math js/src/cpp/libm (glibm.js, glibm2.js, glibm_rt.js, glibm2_rt.js): byte-identical to the commit
+== the check programs, written again (js/test/make_checks.sh)
+checks js/test: byte-identical to the commit (14 files, 1731 lines)
+== syntax of every file Node will load
+node --check: 23 files, no errors
+rerun copy ready: /dev/shm/js6_v/repo/js/runswmm6_saves.sh
+rc=0

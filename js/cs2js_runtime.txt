@@ -1,0 +1,621 @@
+base class Cpp.CppException	cpp.CppException
+catch Cpp.CppException	cpp.CppException (instanceof)
+catch Cpp.RuntimeError	cpp.RuntimeError (instanceof)
+conversion Cpp.CPtr.implicit operator Cpp.CPtr(Cpp.Ptr<byte>)	cpp.CPtr.from_Ptruc
+conversion Cpp.CPtr.implicit operator Cpp.CPtr(Cpp.Ptr<sbyte>)	cpp.CPtr.from_Ptrc
+conversion Cpp.Ptr<T>.implicit operator Cpp.Ptr<T>(Cpp.Iter<T>)	cpp.Ptr.from_IterT
+conversion Cpp.Str.implicit operator Cpp.Str(Cpp.CPtr)	cpp.Str.from_CPtr
+CPtr indexer (an sbyte value)	get(i), set(i, v), ref(i)
+field Cpp.Atomic<T>.v	v
+field Cpp.CSpan<T>.a	a
+field Cpp.CSpan<T>.n	n
+field Cpp.CSpan<T>.o	o
+field Cpp.FromCharsResult.ec	ec
+field Cpp.FromCharsResult.ptr	ptr
+field Cpp.Iter<T>.a	a
+field Cpp.Iter<T>.i	i
+field Cpp.Opt<T>.has	has
+field Cpp.Opt<T>.val	val
+field Cpp.Pair<A, B>.first	first
+field Cpp.Pair<A, B>.second	second
+field Cpp.Str.b	b
+field Cpp.Str.n	n
+field Cpp.Vec<T>.a	a
+field Cpp.Vec<T>.n	n
+foreach over IEnumerable<T> (a runtime member returning one)	a JavaScript iterable
+helper cpp.ArrRef	cpp.ArrRef  -- new ArrRef(array, index): a Ref to array[index]
+helper cpp.fieldRef	cpp.fieldRef  -- fieldRef(obj, name): a Ref to the property name of obj (an object, or a class for a static field)
+helper cpp.L.addL	cpp.L.addL  -- see RUNTIME_HELPERS.md
+helper cpp.L.addUL	cpp.L.addUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.decUL	cpp.L.decUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.divI	cpp.L.divI  -- see RUNTIME_HELPERS.md
+helper cpp.L.divL	cpp.L.divL  -- see RUNTIME_HELPERS.md
+helper cpp.L.divUL	cpp.L.divUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.incL	cpp.L.incL  -- see RUNTIME_HELPERS.md
+helper cpp.L.incUL	cpp.L.incUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.ix	cpp.L.ix  -- see RUNTIME_HELPERS.md
+helper cpp.L.mulL	cpp.L.mulL  -- see RUNTIME_HELPERS.md
+helper cpp.L.mulUL	cpp.L.mulUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.remI	cpp.L.remI  -- see RUNTIME_HELPERS.md
+helper cpp.L.remL	cpp.L.remL  -- see RUNTIME_HELPERS.md
+helper cpp.L.remU	cpp.L.remU  -- see RUNTIME_HELPERS.md
+helper cpp.L.remUL	cpp.L.remUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.shlL	cpp.L.shlL  -- see RUNTIME_HELPERS.md
+helper cpp.L.shrUL	cpp.L.shrUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.subL	cpp.L.subL  -- see RUNTIME_HELPERS.md
+helper cpp.L.subUL	cpp.L.subUL  -- see RUNTIME_HELPERS.md
+helper cpp.L.toF32	cpp.L.toF32  -- see RUNTIME_HELPERS.md
+helper cpp.L.toF64	cpp.L.toF64  -- see RUNTIME_HELPERS.md
+helper cpp.L.toI32	cpp.L.toI32  -- see RUNTIME_HELPERS.md
+helper cpp.L.toI64	cpp.L.toI64  -- see RUNTIME_HELPERS.md
+helper cpp.L.toU32	cpp.L.toU32  -- see RUNTIME_HELPERS.md
+helper cpp.L.toU64	cpp.L.toU64  -- see RUNTIME_HELPERS.md
+helper cpp.L.xorUL	cpp.L.xorUL  -- see RUNTIME_HELPERS.md
+helper cpp.R.File_Exists	cpp.R.File_Exists  -- File_Exists(path: string): whether the file exists (System.IO.File.Exists)
+helper cpp.R.isInf	cpp.R.isInf  -- isInf(x): x is +Infinity or -Infinity
+helper cpp.SysException	cpp.SysException  -- new SysException(kind: string, message: string): a .NET exception the C# throws itself (NotImplementedException, ...); only catch-all clauses take it
+method Cpp.Atomic<T>.compare_exchange(ref T, T)	compare_exchange
+method Cpp.Atomic<T>.fetch_add(T, int) __l	fetch_add__l
+method Cpp.Atomic<T>.fetch_add(T, int) __ul	fetch_add__ul
+method Cpp.CppException.what()	what
+method Cpp.CPtr.Clone()	Clone
+method Cpp.CSpan<T>.empty()	empty
+method Cpp.Defer.Cancel()	Cancel
+method Cpp.Duration.Clone()	Clone
+method Cpp.Duration.count()	count
+method Cpp.ErrorCode.Bool()	Bool
+method Cpp.FsPath.@string()	string
+method Cpp.FsPath.Assign(Cpp.FsPath)	Assign_FsPath
+method Cpp.FsPath.c_str()	c_str
+method Cpp.FsPath.clear()	clear
+method Cpp.FsPath.Clone()	Clone
+method Cpp.FsPath.compare(Cpp.FsPath)	compare
+method Cpp.FsPath.empty()	empty
+method Cpp.FsPath.extension()	extension
+method Cpp.FsPath.generic_string()	generic_string
+method Cpp.FsPath.is_relative()	is_relative
+method Cpp.FsPath.Join(Cpp.FsPath)	Join_FsPath
+method Cpp.FsPath.lexically_normal()	lexically_normal
+method Cpp.FsPath.MoveFrom(Cpp.FsPath)	MoveFrom
+method Cpp.FsPath.parent_path()	parent_path
+method Cpp.FsPath.replace_extension(Cpp.FsPath?)	replace_extension_FsPath
+method Cpp.HashTable<K, E>.clear()	clear
+method Cpp.HashTable<K, E>.contains(K)	contains
+method Cpp.HashTable<K, E>.count(K)	count
+method Cpp.HashTable<K, E>.end()	end
+method Cpp.HashTable<K, E>.erase(Cpp.MIt<E>)	erase_MItE
+method Cpp.HashTable<K, E>.find(K)	find
+method Cpp.HashTable<K, E>.Items()	Items
+method Cpp.HashTable<K, E>.reserve(ulong)	reserve
+method Cpp.HashTable<K, E>.size()	size
+method Cpp.IFStream.is_open()	is_open
+method Cpp.IosBase.bad()	bad
+method Cpp.IosBase.clear(int)	clear
+method Cpp.IosBase.eof()	eof
+method Cpp.IosBase.good()	good
+method Cpp.IosBase.imbue(object?)	imbue
+method Cpp.IosBase.notok()	notok
+method Cpp.IosBase.ok()	ok
+method Cpp.IStream.gcount()	gcount
+method Cpp.IStream.Get(Cpp.Str)	Get_Str
+method Cpp.IStream.Get(ref double)	Get_dr
+method Cpp.IStream.Get(ref int)	Get_ir
+method Cpp.IStream.Get(ref uint)	Get_ur
+method Cpp.IStream.Get(ref ulong)	Get_ulr
+method Cpp.IStream.Manip_ws()	Manip_ws
+method Cpp.IStream.read(Cpp.CPtr, long)	read_CPtr_l
+method Cpp.IStream.read<T>(Cpp.Ptr<T>, long) __c	read_PtrT_l__c
+method Cpp.IStream.read<T>(Cpp.Ptr<T>, long) __d	read_PtrT_l__d
+method Cpp.IStream.read<T>(Cpp.Ptr<T>, long) __f	read_PtrT_l__f
+method Cpp.IStream.read<T>(Cpp.Ptr<T>, long) __i	read_PtrT_l__i
+method Cpp.IStream.read<T>(Cpp.Ptr<T>, long) __l	read_PtrT_l__l
+method Cpp.IStream.read<T>(Cpp.Ptr<T>, long) __u	read_PtrT_l__u
+method Cpp.IStream.read<T>(Cpp.Ptr<T>, long) __uc	read_PtrT_l__uc
+method Cpp.IStream.seekg(long, int)	seekg
+method Cpp.IStream.tellg()	tellg
+method Cpp.Iter<T>.Clone()	Clone
+method Cpp.Map<K, V>.Assign(Cpp.Map<K, V>)	Assign
+method Cpp.Map<K, V>.Clone()	Clone
+method Cpp.Map<K, V>.emplace(K, V)	emplace_K_V
+method Cpp.Map<K, V>.empty()	empty
+method Cpp.Map<K, V>.end()	end
+method Cpp.Map<K, V>.find(K)	find
+method Cpp.Map<K, V>.Index(K)	Index
+method Cpp.Map<K, V>.Index(K) (ref)	ref_Index
+method Cpp.Map<K, V>.Items()	Items
+method Cpp.Map<K, V>.size()	size
+method Cpp.MIt<E>.Clone()	Clone
+method Cpp.OFStream.close()	close
+method Cpp.OFStream.is_open()	is_open
+method Cpp.OFStream.open(Cpp.Str, int)	open_Str_i
+method Cpp.Opt<T>.Assign(Cpp.Opt<T>)	Assign
+method Cpp.Opt<T>.Clone()	Clone
+method Cpp.Opt<T>.emplace(T)	emplace
+method Cpp.Opt<T>.MoveFrom(Cpp.Opt<T>)	MoveFrom
+method Cpp.Opt<T>.reset()	reset
+method Cpp.Opt<T>.Set(T)	Set
+method Cpp.Opt<T>.value_or(T)	value_or
+method Cpp.OStream.Manip_quoted(Cpp.CPtr)	Manip_quoted_CPtr
+method Cpp.OStream.Manip_quoted(Cpp.Str)	Manip_quoted_Str
+method Cpp.OStream.Manip_setprecision(long)	Manip_setprecision
+method Cpp.OStream.Put(Cpp.CPtr)	Put_CPtr
+method Cpp.OStream.Put(Cpp.Str)	Put_Str
+method Cpp.OStream.Put(double)	Put_d
+method Cpp.OStream.Put(int)	Put_i
+method Cpp.OStream.Put(sbyte)	Put_c
+method Cpp.OStream.Put(ulong)	Put_ul
+method Cpp.OStream.write(Cpp.CPtr, long)	write_CPtr_l
+method Cpp.OStream.write<T>(Cpp.Ptr<T>, long) __d	write_PtrT_l__d
+method Cpp.OStream.write<T>(Cpp.Ptr<T>, long) __f	write_PtrT_l__f
+method Cpp.OStream.write<T>(Cpp.Ptr<T>, long) __i	write_PtrT_l__i
+method Cpp.OStream.write<T>(Cpp.Ptr<T>, long) __l	write_PtrT_l__l
+method Cpp.OStream.write<T>(Cpp.Ptr<T>, long) __u	write_PtrT_l__u
+method Cpp.OStringStream.str()	str_
+method Cpp.Pair<A, B>.Clone()	Clone
+method Cpp.Que<T>.Assign(Cpp.Que<T>)	Assign
+method Cpp.Que<T>.Clone()	Clone
+method Cpp.Set<T>.Assign(Cpp.Set<T>)	Assign
+method Cpp.Set<T>.Clone()	Clone
+method Cpp.Set<T>.insert(T)	insert
+method Cpp.Stk<T>.empty()	empty
+method Cpp.Stk<T>.pop()	pop
+method Cpp.Stk<T>.push(T)	push
+method Cpp.Stk<T>.size()	size
+method Cpp.Stk<T>.top()	top
+method Cpp.Str.append(Cpp.CPtr, ulong)	append_CPtr_ul
+method Cpp.Str.append(Cpp.CPtr)	append_CPtr
+method Cpp.Str.append(Cpp.Str)	append_Str
+method Cpp.Str.append(int)	append_i
+method Cpp.Str.assign(Cpp.CPtr, ulong)	assign_CPtr_ul
+method Cpp.Str.Assign(Cpp.CPtr)	Assign_CPtr
+method Cpp.Str.assign(Cpp.Ptr<sbyte>, Cpp.Ptr<sbyte>)	assign_Ptrc_Ptrc
+method Cpp.Str.assign(Cpp.Str)	assign_Str
+method Cpp.Str.Assign(Cpp.Str)	Assign_Str
+method Cpp.Str.back()	back
+method Cpp.Str.begin()	begin
+method Cpp.Str.c_str()	c_str
+method Cpp.Str.clear()	clear
+method Cpp.Str.Clone()	Clone
+method Cpp.Str.compare(ulong, ulong, Cpp.Str)	compare_ul_ul_Str
+method Cpp.Str.data()	data
+method Cpp.Str.empty()	empty
+method Cpp.Str.end()	end
+method Cpp.Str.EqLit(Cpp.CPtr)	EqLit
+method Cpp.Str.Equals(Cpp.Str?)	Equals_Str
+method Cpp.Str.erase(ulong, ulong)	erase
+method Cpp.Str.find_first_not_of(Cpp.CPtr, ulong)	find_first_not_of_CPtr_ul
+method Cpp.Str.find_first_not_of(int, ulong)	find_first_not_of_i_ul
+method Cpp.Str.find_first_of(Cpp.CPtr, ulong)	find_first_of_CPtr_ul
+method Cpp.Str.find_last_not_of(Cpp.CPtr, ulong)	find_last_not_of_CPtr_ul
+method Cpp.Str.find_last_of(int, ulong)	find_last_of_i_ul
+method Cpp.Str.find(Cpp.CPtr, ulong)	find_CPtr_ul
+method Cpp.Str.find(int, ulong)	find_i_ul
+method Cpp.Str.front()	front
+method Cpp.Str.MoveFrom(Cpp.Str)	MoveFrom
+method Cpp.Str.pop_back()	pop_back
+method Cpp.Str.push_back(int)	push_back
+method Cpp.Str.remove_prefix(ulong)	remove_prefix
+method Cpp.Str.reserve(ulong)	reserve
+method Cpp.Str.resize(ulong, int)	resize
+method Cpp.Str.rfind(Cpp.CPtr, ulong)	rfind_CPtr_ul
+method Cpp.Str.rfind(int, ulong)	rfind_i_ul
+method Cpp.Str.size()	size
+method Cpp.Str.starts_with(Cpp.CPtr)	starts_with_CPtr
+method Cpp.Str.starts_with(Cpp.Str)	starts_with_Str
+method Cpp.Str.substr(ulong, ulong)	substr
+method Cpp.Str.ToString()	toString()
+method Cpp.TimePoint.Clone()	Clone
+method Cpp.UMap<K, V>.Assign(Cpp.UMap<K, V>)	Assign
+method Cpp.UMap<K, V>.Clone()	Clone
+method Cpp.UMap<K, V>.emplace(K, V)	emplace_K_V
+method Cpp.UMap<K, V>.Index(K)	Index
+method Cpp.UMap<K, V>.Index(K) (ref)	ref_Index
+method Cpp.UMapC<K, V, H, E>.Assign(Cpp.UMapC<K, V, H, E>)	Assign
+method Cpp.UMapC<K, V, H, E>.Clone()	Clone
+method Cpp.USet<T>.insert(T)	insert
+method Cpp.Variant.Assign(Cpp.Variant)	Assign
+method Cpp.Variant.Clone()	Clone
+method Cpp.Variant.MoveFrom(Cpp.Variant)	MoveFrom
+method Cpp.Variant.Set(bool)	Set_b
+method Cpp.Variant.Set(Cpp.Str)	Set_Str
+method Cpp.Variant.Set(double)	Set_d
+method Cpp.Variant.Set(int)	Set_i
+method Cpp.Vec<T>.assign(Cpp.Iter<T>, Cpp.Iter<T>)	assign_IterT_IterT
+method Cpp.Vec<T>.Assign(Cpp.Vec<T>)	Assign_VecT
+method Cpp.Vec<T>.assign(ulong, T)	assign_ul_T
+method Cpp.Vec<T>.at(ulong)	at
+method Cpp.Vec<T>.back()	back
+method Cpp.Vec<T>.back() (ref)	ref_back
+method Cpp.Vec<T>.begin()	begin
+method Cpp.Vec<T>.capacity()	capacity
+method Cpp.Vec<T>.clear()	clear
+method Cpp.Vec<T>.Clone()	Clone
+method Cpp.Vec<T>.data()	data
+method Cpp.Vec<T>.emplace_back(T)	emplace_back
+method Cpp.Vec<T>.empty()	empty
+method Cpp.Vec<T>.end()	end
+method Cpp.Vec<T>.erase(Cpp.Iter<T>, Cpp.Iter<T>)	erase_IterT_IterT
+method Cpp.Vec<T>.erase(Cpp.Iter<T>)	erase_IterT
+method Cpp.Vec<T>.front()	front
+method Cpp.Vec<T>.insert(Cpp.Iter<T>, Cpp.Iter<T>, Cpp.Iter<T>)	insert_IterT_IterT_IterT
+method Cpp.Vec<T>.insert(Cpp.Iter<T>, Cpp.Ptr<T>, Cpp.Ptr<T>)	insert_IterT_PtrT_PtrT
+method Cpp.Vec<T>.insert(Cpp.Iter<T>, T)	insert_IterT_T
+method Cpp.Vec<T>.insert(Cpp.Iter<T>, T[])	insert_IterT_TA
+method Cpp.Vec<T>.MoveFrom(Cpp.Vec<T>)	MoveFrom_VecT
+method Cpp.Vec<T>.MoveFrom(T[])	MoveFrom_TA
+method Cpp.Vec<T>.pop_back()	pop_back
+method Cpp.Vec<T>.push_back(T)	push_back
+method Cpp.Vec<T>.rbegin()	rbegin
+method Cpp.Vec<T>.rend()	rend
+method Cpp.Vec<T>.reserve(ulong)	reserve
+method Cpp.Vec<T>.resize(ulong, T)	resize_ul_T
+method Cpp.Vec<T>.resize(ulong)	resize_ul
+method Cpp.Vec<T>.shrink_to_fit()	shrink_to_fit
+method Cpp.Vec<T>.size()	size
+method Cpp.Vec<T>.swap(Cpp.Vec<T>)	swap
+new cell (an address-taken local or parameter)	new cpp.Cell(v): a Ref whose value is the field v
+new Cpp.Atomic<T>.Atomic() + makers	new cpp.Atomic(...)
+new Cpp.Atomic<T>.Atomic(T) + makers	cpp.Atomic.new_T(...)  (a static factory: the class has several constructors)
+new Cpp.CondVar.CondVar()	new cpp.CondVar(...)
+new Cpp.Defer.Defer(System.Action)	new cpp.Defer(...)
+new Cpp.ErrorCode.ErrorCode()	new cpp.ErrorCode(...)
+new Cpp.FsPath.FsPath()	new cpp.FsPath(...)
+new Cpp.FsPath.FsPath(Cpp.CPtr)	cpp.FsPath.new_CPtr(...)  (a static factory: the class has several constructors)
+new Cpp.FsPath.FsPath(Cpp.Str)	cpp.FsPath.new_Str(...)  (a static factory: the class has several constructors)
+new Cpp.IFStream.IFStream(Cpp.FsPath, int)	cpp.IFStream.new_FsPath_i(...)  (a static factory: the class has several constructors)
+new Cpp.IFStream.IFStream(Cpp.Str, int)	cpp.IFStream.new_Str_i(...)  (a static factory: the class has several constructors)
+new Cpp.InvalidArgument.InvalidArgument(Cpp.Str)	cpp.InvalidArgument.new_Str(...)  (a static factory: the class has several constructors)
+new Cpp.IStringStream.IStringStream(Cpp.Str, int)	cpp.IStringStream.new_Str_i(...)  (a static factory: the class has several constructors)
+new Cpp.IStringStream.IStringStream(Cpp.Str)	cpp.IStringStream.new_Str(...)  (a static factory: the class has several constructors)
+new Cpp.Iter<T>.Iter(T[], long)	cpp.Iter.new_TA_l(...)  (a static factory: the class has several constructors)
+new Cpp.Lock.Lock()	new cpp.Lock(...)
+new Cpp.Map<K, V>.Map(System.Func<K, K, bool>?, System.Func<V>?)	cpp.Map.new_FuncKKb_FuncV(...)  (a static factory: the class has several constructors)
+new Cpp.Mutex.Mutex()	new cpp.Mutex(...)
+new Cpp.OFStream.OFStream()	new cpp.OFStream(...)
+new Cpp.OFStream.OFStream(Cpp.CPtr, int)	cpp.OFStream.new_CPtr_i(...)  (a static factory: the class has several constructors)
+new Cpp.OFStream.OFStream(Cpp.FsPath, int)	cpp.OFStream.new_FsPath_i(...)  (a static factory: the class has several constructors)
+new Cpp.OnceFlag.OnceFlag()	new cpp.OnceFlag(...)
+new Cpp.Opt<T>.Opt() + makers	new cpp.Opt(...)
+new Cpp.Opt<T>.Opt(T) + makers	cpp.Opt.new_T(...)  (a static factory: the class has several constructors)
+new Cpp.OStringStream.OStringStream()	new cpp.OStringStream(...)
+new Cpp.OStringStream.OStringStream(int)	cpp.OStringStream.new_i(...)  (a static factory: the class has several constructors)
+new Cpp.OutOfRange.OutOfRange(Cpp.Str)	cpp.OutOfRange.new_Str(...)  (a static factory: the class has several constructors)
+new Cpp.Pair<A, B>.Pair() + makers	new cpp.Pair(...)
+new Cpp.Pair<A, B>.Pair(A, B)	cpp.Pair.new_A_B(...)  (a static factory: the class has several constructors)
+new Cpp.Ptr<T>.Ptr(object?, Cpp.RefAt<T>)	cpp.Ptr.new_o_RefAtT(...)  (a static factory: the class has several constructors)
+new Cpp.Ptr<T>.Ptr(T[], long)	cpp.Ptr.new_TA_l(...)  (a static factory: the class has several constructors)
+new Cpp.Que<T>.Que()	new cpp.Que(...)
+new Cpp.RuntimeError.RuntimeError(Cpp.Str)	cpp.RuntimeError.new_Str(...)  (a static factory: the class has several constructors)
+new Cpp.Set<T>.Set(System.Func<T, T, bool>?)	cpp.Set.new_FuncTTb(...)  (a static factory: the class has several constructors)
+new Cpp.Stk<T>.Stk()	new cpp.Stk(...)
+new Cpp.Str.Str()	new cpp.Str(...)
+new Cpp.Str.Str(Cpp.CPtr, ulong)	cpp.Str.new_CPtr_ul(...)  (a static factory: the class has several constructors)
+new Cpp.Str.Str(Cpp.CPtr)	cpp.Str.new_CPtr(...)  (a static factory: the class has several constructors)
+new Cpp.Str.Str(Cpp.Str)	cpp.Str.new_Str(...)  (a static factory: the class has several constructors)
+new Cpp.Str.Str(ulong, int)	cpp.Str.new_ul_i(...)  (a static factory: the class has several constructors)
+new Cpp.Thread.Thread()	new cpp.Thread(...)
+new Cpp.TupN.TupN(params object[])	cpp.TupN.new_oA(...)  (a static factory: the class has several constructors)
+new Cpp.UMap<K, V>.UMap(Cpp.Pair<K, V>[], System.Func<K, ulong>?, System.Func<K, K, bool>?) + makers	cpp.UMap.new_PairKVA_FuncKul_FuncKKb(...)  (a static factory: the class has several constructors)
+new Cpp.UMap<K, V>.UMap(System.Func<K, ulong>?, System.Func<K, K, bool>?, System.Func<V>?)	cpp.UMap.new_FuncKul_FuncKKb_FuncV(...)  (a static factory: the class has several constructors)
+new Cpp.UMapC<K, V, H, E>.UMapC(System.Func<V>?) + makers	cpp.UMapC.new_FuncV(...)  (a static factory: the class has several constructors)
+new Cpp.USet<T>.USet(System.Func<T, ulong>?, System.Func<T, T, bool>?)	cpp.USet.new_FuncTul_FuncTTb(...)  (a static factory: the class has several constructors)
+new Cpp.Variant.Variant()	new cpp.Variant(...)
+new Cpp.Vec<T>.Vec() + makers	new cpp.Vec(...)
+new Cpp.Vec<T>.Vec(System.Func<T>)	cpp.Vec.new_FuncT(...)  (a static factory: the class has several constructors)
+new Cpp.Vec<T>.Vec(T[]) + makers	cpp.Vec.new_TA(...)  (a static factory: the class has several constructors)
+new Cpp.Vec<T>.Vec(ulong, System.Func<T>)	cpp.Vec.new_ul_FuncT(...)  (a static factory: the class has several constructors)
+new Cpp.Vec<T>.Vec(ulong, T) + makers	cpp.Vec.new_ul_T(...)  (a static factory: the class has several constructors)
+new Cpp.Vec<T>.Vec(ulong) + makers	cpp.Vec.new_ul(...)  (a static factory: the class has several constructors)
+operator Cpp.CPtr.operator !=(Cpp.CPtr, Cpp.CPtr)	cpp.CPtr.op_Ne
+operator Cpp.CPtr.operator +(Cpp.CPtr, int)	cpp.CPtr.op_Add_CPtr_i
+operator Cpp.CPtr.operator +(Cpp.CPtr, long)	cpp.CPtr.op_Add_CPtr_l
+operator Cpp.CPtr.operator <(Cpp.CPtr, Cpp.CPtr)	cpp.CPtr.op_Lt
+operator Cpp.CPtr.operator ==(Cpp.CPtr, Cpp.CPtr)	cpp.CPtr.op_Eq
+operator Cpp.Iter<T>.operator -(Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Iter.op_Sub_IterT_IterT
+operator Cpp.Iter<T>.operator -(Cpp.Iter<T>, long)	cpp.Iter.op_Sub_IterT_l
+operator Cpp.Iter<T>.operator +(Cpp.Iter<T>, long)	cpp.Iter.op_Add
+operator Cpp.Iter<T>.operator ++(Cpp.Iter<T>)	cpp.Iter.op_Increment
+operator Cpp.Iter<T>.operator ==(Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Iter.op_Eq
+operator Cpp.MIt<E>.operator ==(Cpp.MIt<E>, Cpp.MIt<E>)	cpp.MIt.op_Eq
+operator Cpp.Ptr<T>.operator -(Cpp.Ptr<T>, long)	cpp.Ptr.op_Sub_PtrT_l
+operator Cpp.Ptr<T>.operator !=(Cpp.Ptr<T>, Cpp.Ptr<T>)	cpp.Ptr.op_Ne
+operator Cpp.Ptr<T>.operator +(Cpp.Ptr<T>, long)	cpp.Ptr.op_Add_PtrT_l
+operator Cpp.Ptr<T>.operator ==(Cpp.Ptr<T>, Cpp.Ptr<T>)	cpp.Ptr.op_Eq
+operator Cpp.RevIter<T>.operator ++(Cpp.RevIter<T>)	cpp.RevIter.op_Increment
+operator Cpp.RevIter<T>.operator ==(Cpp.RevIter<T>, Cpp.RevIter<T>)	cpp.RevIter.op_Eq
+operator Cpp.TimePoint.operator -(Cpp.TimePoint, Cpp.TimePoint)	cpp.TimePoint.op_Sub
+property Cpp.Box<T>.V (ref)	ref_V
+property Cpp.CPtr.IsNull	get_IsNull
+property Cpp.Iter<T>.Deref	get_Deref
+property Cpp.MIt<E>.Deref	get_Deref
+property Cpp.Ptr<T>.Deref	get_Deref
+property Cpp.Ptr<T>.Deref (ref)	ref_Deref
+property Cpp.Ptr<T>.IsNull	get_IsNull
+property Cpp.Ptr<T>.this[][int]	get_Item_i
+property Cpp.Ptr<T>.this[][int] (ref)	ref_Item_i
+property Cpp.Ptr<T>.this[][long]	get_Item_l
+property Cpp.Ptr<T>.this[][long] (ref)	ref_Item_l
+property Cpp.Ptr<T>.this[][ulong]	get_Item_ul
+property Cpp.Ptr<T>.this[][ulong] (ref)	ref_Item_ul
+property Cpp.RevIter<T>.Deref	get_Deref
+static Cpp.Algo.accumulate(Cpp.Iter<double>, Cpp.Iter<double>, double)	cpp.Algo.accumulate_Iterd_Iterd_d
+static Cpp.Algo.all_of<T>(Cpp.Iter<T>, Cpp.Iter<T>, System.Func<T, bool>)	cpp.Algo.all_of
+static Cpp.Algo.any_of<T>(Cpp.Iter<T>, Cpp.Iter<T>, System.Func<T, bool>)	cpp.Algo.any_of
+static Cpp.Algo.begin<T>(T[])	cpp.Algo.begin_TA
+static Cpp.Algo.copy_n<T>(Cpp.Ptr<T>, ulong, Cpp.Ptr<T>)	cpp.Algo.copy_n_PtrT_ul_PtrT
+static Cpp.Algo.copy<T>(Cpp.Iter<T>, Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Algo.copy_IterT_IterT_IterT
+static Cpp.Algo.count<T>(Cpp.Iter<T>, Cpp.Iter<T>, T)	cpp.Algo.count
+static Cpp.Algo.end<T>(T[])	cpp.Algo.end_TA
+static Cpp.Algo.fill_n<T>(Cpp.Ptr<T>, ulong, T)	cpp.Algo.fill_n_PtrT_ul_T
+static Cpp.Algo.fill<T>(Cpp.Iter<T>, Cpp.Iter<T>, T)	cpp.Algo.fill_IterT_IterT_T
+static Cpp.Algo.fill<T>(Cpp.Ptr<T>, Cpp.Ptr<T>, T)	cpp.Algo.fill_PtrT_PtrT_T
+static Cpp.Algo.find_if<T>(Cpp.Iter<T>, Cpp.Iter<T>, System.Func<T, bool>)	cpp.Algo.find_if
+static Cpp.Algo.find<T>(Cpp.Iter<T>, Cpp.Iter<T>, T)	cpp.Algo.find
+static Cpp.Algo.iota(Cpp.Iter<ulong>, Cpp.Iter<ulong>, ulong)	cpp.Algo.iota_Iterul_Iterul_ul
+static Cpp.Algo.is_sorted<T>(Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Algo.is_sorted_IterT_IterT
+static Cpp.Algo.lower_bound<T, V>(Cpp.Iter<T>, Cpp.Iter<T>, V, System.Func<T, V, bool>)	cpp.Algo.lower_bound_IterT_IterT_V_FuncTVb
+static Cpp.Algo.lower_bound<T>(Cpp.Iter<T>, Cpp.Iter<T>, T)	cpp.Algo.lower_bound_IterT_IterT_T
+static Cpp.Algo.max_element<T>(Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Algo.max_element_IterT_IterT
+static Cpp.Algo.min_element<T>(Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Algo.min_element_IterT_IterT
+static Cpp.Algo.none_of<T>(Cpp.Iter<T>, Cpp.Iter<T>, System.Func<T, bool>)	cpp.Algo.none_of
+static Cpp.Algo.replace<T>(Cpp.Iter<T>, Cpp.Iter<T>, T, T)	cpp.Algo.replace
+static Cpp.Algo.transform(Cpp.Iter<byte>, Cpp.Iter<byte>, Cpp.Iter<byte>, System.Func<byte, sbyte>)	cpp.Algo.transform_Iteruc_Iteruc_Iteruc_Funcucc
+static Cpp.Algo.transform<T, U>(Cpp.Iter<T>, Cpp.Iter<T>, Cpp.Iter<U>, System.Func<T, U>)	cpp.Algo.transform_IterT_IterT_IterU_FuncTU
+static Cpp.Algo.unique<T>(Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Algo.unique_IterT_IterT
+static Cpp.Algo.upper_bound<T>(Cpp.Iter<T>, Cpp.Iter<T>, T)	cpp.Algo.upper_bound_IterT_IterT_T
+static Cpp.Algo.VecFrom<T>(Cpp.Iter<T>, Cpp.Iter<T>)	cpp.Algo.VecFrom
+static Cpp.Arr.Assign<T>(T[], T[])	cpp.Arr.Assign
+static Cpp.Arr.Clone<T>(T[])	cpp.Arr.Clone
+static Cpp.Arr.Eq<T>(T[], T[])	cpp.Arr.Eq
+static Cpp.Arr.Make<T>(int) + makers	cpp.Arr.Make
+static Cpp.Arr.Make2<T>(int, int) + makers	cpp.Arr.Make2
+static Cpp.Arr.MakeWith<T>(int, System.Func<T>)	cpp.Arr.MakeWith
+static Cpp.Box<T>.Of(Cpp.RefGet<T>)	cpp.Box.Of
+static Cpp.Bytes.View(Cpp.CPtr)	cpp.Bytes.View_CPtr
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __b	cpp.Bytes.View_PtrT__b
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __c	cpp.Bytes.View_PtrT__c
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __d	cpp.Bytes.View_PtrT__d
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __f	cpp.Bytes.View_PtrT__f
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __i	cpp.Bytes.View_PtrT__i
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __l	cpp.Bytes.View_PtrT__l
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __s	cpp.Bytes.View_PtrT__s
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __u	cpp.Bytes.View_PtrT__u
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __uc	cpp.Bytes.View_PtrT__uc
+static Cpp.Bytes.View<T>(Cpp.Ptr<T>) __ul	cpp.Bytes.View_PtrT__ul
+static Cpp.Conv.D2I(double)	cpp.Conv.D2I
+static Cpp.Conv.D2L(double)	cpp.Conv.D2L
+static Cpp.Conv.D2SB(double)	cpp.Conv.D2SB
+static Cpp.Conv.D2UL(double)	cpp.Conv.D2UL
+static Cpp.CPtr.Diff(Cpp.CPtr, Cpp.CPtr)	cpp.CPtr.Diff
+static Cpp.CPtr.ZERO (the default value; one for every T)	cpp.CPtr.ZERO
+static Cpp.CSpan<T>.ZERO (the default value; one for every T)	cpp.CSpan.ZERO
+static Cpp.Dbg.Caught(System.Exception)	cpp.Dbg.Caught
+static Cpp.Dtor.Run(object?)	cpp.Dtor.Run
+static Cpp.Fs.create_hard_link(Cpp.FsPath, Cpp.FsPath, Cpp.ErrorCode)	cpp.Fs.create_hard_link
+static Cpp.Fs.equivalent(Cpp.FsPath, Cpp.FsPath)	cpp.Fs.equivalent_FsPath_FsPath
+static Cpp.Fs.exists(Cpp.FsPath, Cpp.ErrorCode)	cpp.Fs.exists_FsPath_ErrorCode
+static Cpp.Fs.file_size(Cpp.FsPath, Cpp.ErrorCode)	cpp.Fs.file_size_FsPath_ErrorCode
+static Cpp.Fs.file_size(Cpp.FsPath)	cpp.Fs.file_size_FsPath
+static Cpp.Fs.is_directory(Cpp.FsPath)	cpp.Fs.is_directory_FsPath
+static Cpp.Fs.is_regular_file(Cpp.FileStatus)	cpp.Fs.is_regular_file_FileStatus
+static Cpp.Fs.remove(Cpp.FsPath, Cpp.ErrorCode)	cpp.Fs.remove_FsPath_ErrorCode
+static Cpp.Fs.rename(Cpp.FsPath, Cpp.FsPath, Cpp.ErrorCode)	cpp.Fs.rename_FsPath_FsPath_ErrorCode
+static Cpp.Fs.symlink_status(Cpp.FsPath, Cpp.ErrorCode)	cpp.Fs.symlink_status_FsPath_ErrorCode
+static Cpp.Fs.symlink_status(Cpp.FsPath)	cpp.Fs.symlink_status_FsPath
+static Cpp.Fs.weakly_canonical(Cpp.FsPath)	cpp.Fs.weakly_canonical_FsPath
+static Cpp.LibM.expm1(double)	cpp.LibM.expm1
+static Cpp.LibM.fmod(double, double)	cpp.LibM.fmod
+static Cpp.LibM.hypot(double, double)	cpp.LibM.hypot
+static Cpp.LibM.log1p(double)	cpp.LibM.log1p
+static Cpp.LibM.nextafter(double, double)	cpp.LibM.nextafter
+static Cpp.LibM.remainder(double, double)	cpp.LibM.remainder
+static Cpp.LibM.round(double)	cpp.LibM.round
+static Cpp.M.clamp(double, double, double)	cpp.M.clamp_d_d_d
+static Cpp.M.clamp(int, int, int)	cpp.M.clamp_i_i_i
+static Cpp.M.max(double, double)	cpp.M.max_d_d
+static Cpp.M.max(double[])	cpp.M.max_dA
+static Cpp.M.max(int, int)	cpp.M.max_i_i
+static Cpp.M.max(int[])	cpp.M.max_iA
+static Cpp.M.max(long, long)	cpp.M.max_l_l
+static Cpp.M.max(uint, uint)	cpp.M.max_u_u
+static Cpp.M.max(ulong, ulong)	cpp.M.max_ul_ul
+static Cpp.M.min(byte, byte)	cpp.M.min_uc_uc
+static Cpp.M.min(double, double)	cpp.M.min_d_d
+static Cpp.M.min(double[])	cpp.M.min_dA
+static Cpp.M.min(int, int)	cpp.M.min_i_i
+static Cpp.M.min(ulong, ulong)	cpp.M.min_ul_ul
+static Cpp.Mem.Calloc<T>(ulong, ulong) __d	cpp.Mem.Calloc__d
+static Cpp.Mem.Diff<T>(T, Cpp.Ptr<T>)	cpp.Mem.Diff_T_PtrT
+static Cpp.Mem.fread(Cpp.CPtr, ulong, ulong, Cpp.CFile)	cpp.Mem.fread_CPtr_ul_ul_CFile
+static Cpp.Mem.fread<T>(Cpp.Ptr<T>, ulong, ulong, Cpp.CFile) __f	cpp.Mem.fread_PtrT_ul_ul_CFile__f
+static Cpp.Mem.fread<T>(Cpp.Ptr<T>, ulong, ulong, Cpp.CFile) __i	cpp.Mem.fread_PtrT_ul_ul_CFile__i
+static Cpp.Mem.Free(object?)	cpp.Mem.Free
+static Cpp.Mem.fwrite(Cpp.CPtr, ulong, ulong, Cpp.CFile)	cpp.Mem.fwrite_CPtr_ul_ul_CFile
+static Cpp.Mem.fwrite<T>(Cpp.Ptr<T>, ulong, ulong, Cpp.CFile) __f	cpp.Mem.fwrite_PtrT_ul_ul_CFile__f
+static Cpp.Mem.fwrite<T>(Cpp.Ptr<T>, ulong, ulong, Cpp.CFile) __i	cpp.Mem.fwrite_PtrT_ul_ul_CFile__i
+static Cpp.Mem.memcpy<T, U>(Cpp.Ptr<T>, Cpp.Ptr<U>, ulong) __u_uc	cpp.Mem.memcpy_PtrT_PtrU_ul__u_uc
+static Cpp.Mem.memcpy<T, U>(Cpp.Ptr<T>, Cpp.Ptr<U>, ulong) __ul_d	cpp.Mem.memcpy_PtrT_PtrU_ul__ul_d
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __c	cpp.Mem.memcpy_PtrT_CPtr_ul__c
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __d	cpp.Mem.memcpy_PtrT_CPtr_ul__d
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __f	cpp.Mem.memcpy_PtrT_CPtr_ul__f
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __i	cpp.Mem.memcpy_PtrT_CPtr_ul__i
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __l	cpp.Mem.memcpy_PtrT_CPtr_ul__l
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __s	cpp.Mem.memcpy_PtrT_CPtr_ul__s
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __u	cpp.Mem.memcpy_PtrT_CPtr_ul__u
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __uc	cpp.Mem.memcpy_PtrT_CPtr_ul__uc
+static Cpp.Mem.memcpy<T>(Cpp.Ptr<T>, Cpp.CPtr, ulong) __ul	cpp.Mem.memcpy_PtrT_CPtr_ul__ul
+static Cpp.Mv.Back<R, T>(R, ref T, T[])	cpp.Mv.Back
+static Cpp.Mv.Delete(object?)	cpp.Mv.Delete
+static Cpp.Mv.PostStep<T>(ref Cpp.Ptr<T>, int)	cpp.Mv.PostStep_PtrTr_i
+static Cpp.Mv.Reset<T>(ref T, T)	cpp.Mv.Reset
+static Cpp.Mv.Take<T>(ref T) + makers	cpp.Mv.Take
+static Cpp.Mv.TakeRef<T>(ref T)	cpp.Mv.TakeRef
+static Cpp.Ptr<T>.ZERO (the default value; one for every T)	cpp.Ptr.ZERO
+static Cpp.R.atof(Cpp.CPtr)	cpp.R.atof
+static Cpp.R.atoi(Cpp.CPtr)	cpp.R.atoi
+static Cpp.R.atol(Cpp.CPtr)	cpp.R.atol
+static Cpp.R.Back<T1, T2>(int, ref T1, ref T2) __l_c	cpp.R.Back_i_T1r_T2r__l_c
+static Cpp.R.Back<T1>(int, ref T1) __c	cpp.R.Back_i_T1r__c
+static Cpp.R.Buf(int)	cpp.R.Buf_i
+static Cpp.R.BufOf(int, int[])	cpp.R.BufOf
+static Cpp.R.Bufs(int, int)	cpp.R.Bufs
+static Cpp.R.CopyBuf(Cpp.CPtr)	cpp.R.CopyBuf
+static Cpp.R.ctime(Cpp.Ptr<long>)	cpp.R.ctime_Ptrl
+static Cpp.R.difftime(long, long)	cpp.R.difftime
+static Cpp.R.fclose(Cpp.CFile)	cpp.R.fclose
+static Cpp.R.feof(Cpp.CFile)	cpp.R.feof
+static Cpp.R.ferror(Cpp.CFile)	cpp.R.ferror
+static Cpp.R.fflush(Cpp.CFile)	cpp.R.fflush
+static Cpp.R.fgetc(Cpp.CFile)	cpp.R.fgetc
+static Cpp.R.fgets(Cpp.CPtr, int, Cpp.CFile)	cpp.R.fgets
+static Cpp.R.fileno(Cpp.CFile)	cpp.R.fileno
+static Cpp.R.fopen(Cpp.CPtr, Cpp.CPtr)	cpp.R.fopen
+static Cpp.R.fprintf(Cpp.CFile, Cpp.CPtr, params object[])	cpp.R.fprintf
+static Cpp.R.freadD1(ref double, Cpp.CFile)	cpp.R.freadD1
+static Cpp.R.freadF1(ref float, Cpp.CFile)	cpp.R.freadF1
+static Cpp.R.freadI1(ref int, Cpp.CFile)	cpp.R.freadI1
+static Cpp.R.fseek(Cpp.CFile, long, int)	cpp.R.fseek_CFile_l_i
+static Cpp.R.ftell(Cpp.CFile)	cpp.R.ftell
+static Cpp.R.fwriteD1(double, Cpp.CFile)	cpp.R.fwriteD1
+static Cpp.R.fwriteF1(float, Cpp.CFile)	cpp.R.fwriteF1
+static Cpp.R.fwriteI1(int, Cpp.CFile)	cpp.R.fwriteI1
+static Cpp.R.getenv(Cpp.CPtr)	cpp.R.getenv
+static Cpp.R.isalnum(int)	cpp.R.isalnum
+static Cpp.R.isalpha(int)	cpp.R.isalpha
+static Cpp.R.isdigit(int)	cpp.R.isdigit
+static Cpp.R.isspace(int)	cpp.R.isspace
+static Cpp.R.Lit(string)	cpp.R.Lit
+static Cpp.R.LitN(string, int)	cpp.R.LitN
+static Cpp.R.memcmp(Cpp.CPtr, Cpp.CPtr, ulong)	cpp.R.memcmp
+static Cpp.R.memcpyBuf(Cpp.CPtr, Cpp.CPtr)	cpp.R.memcpyBuf
+static Cpp.R.RefD(System.Action<double>)	cpp.R.RefD
+static Cpp.R.RefF(System.Action<float>)	cpp.R.RefF
+static Cpp.R.RefI(System.Action<int>)	cpp.R.RefI
+static Cpp.R.RefL(System.Action<long>)	cpp.R.RefL
+static Cpp.R.rewind(Cpp.CFile)	cpp.R.rewind
+static Cpp.R.setvbuf(Cpp.CFile, Cpp.CPtr, int, ulong)	cpp.R.setvbuf
+static Cpp.R.snprintf(Cpp.CPtr, ulong, Cpp.CPtr, params object[])	cpp.R.snprintf_CPtr_ul_CPtr_oA
+static Cpp.R.sscanf(Cpp.CPtr, Cpp.CPtr, params object[])	cpp.R.sscanf
+static Cpp.R.strchr(Cpp.CPtr, int)	cpp.R.strchr
+static Cpp.R.strcmp(Cpp.CPtr, Cpp.CPtr)	cpp.R.strcmp
+static Cpp.R.strlen(Cpp.CPtr)	cpp.R.strlen
+static Cpp.R.strncmp(Cpp.CPtr, Cpp.CPtr, ulong)	cpp.R.strncmp
+static Cpp.R.strncpy(Cpp.CPtr, Cpp.CPtr, ulong)	cpp.R.strncpy
+static Cpp.R.strrchr(Cpp.CPtr, int)	cpp.R.strrchr
+static Cpp.R.strstr(Cpp.CPtr, Cpp.CPtr)	cpp.R.strstr
+static Cpp.R.strtod(Cpp.CPtr, ref Cpp.CPtr)	cpp.R.strtod_CPtr_CPtrr
+static Cpp.R.strtod(Cpp.CPtr)	cpp.R.strtod_CPtr
+static Cpp.R.strtok(Cpp.CPtr, Cpp.CPtr)	cpp.R.strtok
+static Cpp.R.strtol0(Cpp.CPtr, int)	cpp.R.strtol0
+static Cpp.R.time(Cpp.Ptr<long>)	cpp.R.time_Ptrl
+static Cpp.R.tolower(int)	cpp.R.tolower
+static Cpp.R.toupper(int)	cpp.R.toupper
+static Cpp.Std.call_once(Cpp.OnceFlag, System.Action)	cpp.Std.call_once
+static Cpp.Std.from_chars(Cpp.CPtr, Cpp.CPtr, ref double)	cpp.Std.from_chars_CPtr_CPtr_dr
+static Cpp.Std.from_chars(Cpp.CPtr, Cpp.CPtr, ref int)	cpp.Std.from_chars_CPtr_CPtr_ir
+static Cpp.Std.from_chars(Cpp.CPtr, Cpp.CPtr, ref uint)	cpp.Std.from_chars_CPtr_CPtr_ur
+static Cpp.Std.get0<A, B>(Cpp.Pair<A, B>)	cpp.Std.get0_PairAB
+static Cpp.Std.get1<A, B>(Cpp.Pair<A, B>)	cpp.Std.get1_PairAB
+static Cpp.Std.Nop(object?)	cpp.Std.Nop
+static Cpp.Std.Rethrow(System.Exception)	cpp.Std.Rethrow
+static Cpp.Std.swap<T>(ref T, ref T)	cpp.Std.swap
+static Cpp.StdAlgo.Sort<T>(T[], long, long, System.Func<T, T, bool>)	cpp.StdAlgo.Sort
+static Cpp.StdAlgo.StableSort<T>(T[], long, long, System.Func<T, T, bool>)	cpp.StdAlgo.StableSort
+static Cpp.Str.Cat(Cpp.CPtr, Cpp.Str)	cpp.Str.Cat_CPtr_Str
+static Cpp.Str.Cat(Cpp.Str, Cpp.CPtr)	cpp.Str.Cat_Str_CPtr
+static Cpp.Str.Cat(Cpp.Str, Cpp.Str)	cpp.Str.Cat_Str_Str
+static Cpp.Str.Cat(Cpp.Str, int)	cpp.Str.Cat_Str_i
+static Cpp.Str.stod(Cpp.Str, Cpp.Ptr<ulong>)	cpp.Str.stod
+static Cpp.Str.to_string(double)	cpp.Str.to_string_d
+static Cpp.Str.to_string(int)	cpp.Str.to_string_i
+static Cpp.Str.to_string(long)	cpp.Str.to_string_l
+static Cpp.Str.to_string(uint)	cpp.Str.to_string_u
+static Cpp.Str.to_string(ulong)	cpp.Str.to_string_ul
+static Cpp.Streams.getline(Cpp.IStream, Cpp.Str, sbyte)	cpp.Streams.getline_IStream_Str_c
+static Cpp.Streams.getline(Cpp.IStream, Cpp.Str)	cpp.Streams.getline_IStream_Str
+static Cpp.Sys.hardware_concurrency()	cpp.Sys.hardware_concurrency
+static Cpp.TimePoint.now()	cpp.TimePoint.now
+static Cpp.TimePoint.ZERO (the default value; one for every T)	cpp.TimePoint.ZERO
+static Cpp.Vec<T>.Eq(Cpp.Vec<T>, Cpp.Vec<T>)	cpp.Vec.Eq
+static field Cpp.Less<T>.Fn	cpp.Less.Fn
+static field Cpp.R.Slot	cpp.R.Slot
+static field Cpp.R.stderr_	cpp.R.stderr_
+static field Cpp.R.stdout_	cpp.R.stdout_
+static field Cpp.Raw.V	cpp.Raw.V
+static field Cpp.Std.QNaN	cpp.Std.QNaN
+Str.b (backing byte array, elements read and written directly)	b
+System.Math.Acos(Double)	cpp.SysMath.Acos_d
+System.Math.Asin(Double)	cpp.SysMath.Asin_d
+System.Math.Atan(Double)	cpp.SysMath.Atan_d
+System.Math.Atan2(Double,Double)	cpp.SysMath.Atan2_d_d
+System.Math.Cbrt(Double)	cpp.SysMath.Cbrt_d
+System.Math.CopySign(Double,Double)	cpp.SysMath.CopySign_d_d
+System.Math.Cos(Double)	cpp.SysMath.Cos_d
+System.Math.Cosh(Double)	cpp.SysMath.Cosh_d
+System.Math.Exp(Double)	cpp.SysMath.Exp_d
+System.Math.Log(Double)	cpp.SysMath.Log_d
+System.Math.Log10(Double)	cpp.SysMath.Log10_d
+System.Math.Log2(Double)	cpp.SysMath.Log2_d
+System.Math.Pow(Double,Double)	cpp.SysMath.Pow_d_d
+System.Math.Sin(Double)	cpp.SysMath.Sin_d
+System.Math.Sinh(Double)	cpp.SysMath.Sinh_d
+System.Math.Tan(Double)	cpp.SysMath.Tan_d
+System.Math.Tanh(Double)	cpp.SysMath.Tanh_d
+type Cpp.Algo	cpp.Algo
+type Cpp.Arr	cpp.Arr
+type Cpp.Atomic<T>	cpp.Atomic
+type Cpp.Box<T>	cpp.Box
+type Cpp.Bytes	cpp.Bytes
+type Cpp.CondVar	cpp.CondVar
+type Cpp.Conv	cpp.Conv
+type Cpp.CppException	cpp.CppException
+type Cpp.CPtr	cpp.CPtr
+type Cpp.CSpan<T>	cpp.CSpan
+type Cpp.Dbg	cpp.Dbg
+type Cpp.Defer	cpp.Defer
+type Cpp.Dtor	cpp.Dtor
+type Cpp.ErrorCode	cpp.ErrorCode
+type Cpp.Fs	cpp.Fs
+type Cpp.FsPath	cpp.FsPath
+type Cpp.IFStream	cpp.IFStream
+type Cpp.InvalidArgument	cpp.InvalidArgument
+type Cpp.IStringStream	cpp.IStringStream
+type Cpp.Iter<T>	cpp.Iter
+type Cpp.Less<T>	cpp.Less
+type Cpp.LibM	cpp.LibM
+type Cpp.Lock	cpp.Lock
+type Cpp.M	cpp.M
+type Cpp.Map<K, V>	cpp.Map
+type Cpp.Mem	cpp.Mem
+type Cpp.MIt<E>	cpp.MIt
+type Cpp.Mutex	cpp.Mutex
+type Cpp.Mv	cpp.Mv
+type Cpp.OFStream	cpp.OFStream
+type Cpp.OnceFlag	cpp.OnceFlag
+type Cpp.Opt<T>	cpp.Opt
+type Cpp.OStringStream	cpp.OStringStream
+type Cpp.OutOfRange	cpp.OutOfRange
+type Cpp.Pair<A, B>	cpp.Pair
+type Cpp.Ptr<T>	cpp.Ptr
+type Cpp.Que<T>	cpp.Que
+type Cpp.R	cpp.R
+type Cpp.Raw	cpp.Raw
+type Cpp.RevIter<T>	cpp.RevIter
+type Cpp.RuntimeError	cpp.RuntimeError
+type Cpp.Set<T>	cpp.Set
+type Cpp.Std	cpp.Std
+type Cpp.StdAlgo	cpp.StdAlgo
+type Cpp.Stk<T>	cpp.Stk
+type Cpp.Str	cpp.Str
+type Cpp.Streams	cpp.Streams
+type Cpp.Sys	cpp.Sys
+type Cpp.Thread	cpp.Thread
+type Cpp.TimePoint	cpp.TimePoint
+type Cpp.TupN	cpp.TupN
+type Cpp.UMap<K, V>	cpp.UMap
+type Cpp.UMapC<K, V, H, E>	cpp.UMapC
+type Cpp.USet<T>	cpp.USet
+type Cpp.Variant	cpp.Variant
+type Cpp.Vec<T>	cpp.Vec
+using: IDisposable.Dispose()	Dispose()
+Vec.a (backing array, elements read and written directly)	a

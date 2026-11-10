@@ -1,0 +1,30 @@
+# tools/libm/gim2x.py: the JavaScript back end (JsEmitter, WRAPPERS_JS, lang js) was added without changing the other back ends' output.
+# js/test/check_gim2x_unchanged.sh, 2026-11-10: every file regenerated from the same GIMPLE dumps and tables with the gim2x.py of commit 280b0e2 (old) and with the new one
+# old gim2x.py: /dev/shm/js6/gim2x_old.py (md5 e7748621228ab711e25e893b00e88421); new: tools/libm/gim2x.py (md5 bc00ef971a53a9a253643adebab426ac)
+# GIMPLE dumps and tables: /dev/shm/js6/glibm (17 dumps, tables.json md5 adc7e0196ef68f9d6e1fee7de6ea89fd)
+glibm.go: old and new identical (5376 lines, md5 fa30ec1c5a5d0b8e9d7db8f2c813a0ea)
+glibm2.go: old and new identical (3090 lines, md5 f48444ceade7e4dfba7264e1a57e19d8)
+Glibm.java: old and new identical (4943 lines, md5 3a3d39b73c60df823b43287768f5bc04)
+Glibm2.java: old and new identical (2727 lines, md5 6cd813ccf717e15e23493b966f23794c)
+glibm.ts: old and new identical (5011 lines, md5 e3d3587dd19e3de4ba8e8fda4a0e1183)
+glibm2.ts: old and new identical (2726 lines, md5 23ca9469bb606418d5ffe887d0ab0741)
+Glibm.kt: old and new identical (4947 lines, md5 d1fb0c87989bb73c3ad5c857f29b8e5f)
+Glibm2.kt: old and new identical (2731 lines, md5 ae2d95550db2fb22f3687b77ffdb792b)
+Glibm.groovy: old and new identical (5614 lines, md5 666bc76538b8c947ecbed8a9de3826d1)
+Glibm2.groovy: old and new identical (3285 lines, md5 5d551a12aaf914c717deb2344746db8c)
+# the new files against the committed ones, outside // comments
+go/glibm/glibm.go vs new glibm.go: 0 differing lines outside // comments
+go/glibm/glibm2.go vs new glibm2.go: 0 differing lines outside // comments
+java/src/cpp/Glibm.java vs new Glibm.java: 0 differing lines outside // comments
+java/src/cpp/Glibm2.java vs new Glibm2.java: 0 differing lines outside // comments
+ts/src/cpp/libm/glibm.ts vs new glibm.ts: 0 differing lines outside // comments
+ts/src/cpp/libm/glibm2.ts vs new glibm2.ts: 0 differing lines outside // comments
+kotlin/src/cpp/Glibm.kt vs new Glibm.kt: 0 differing lines outside // comments
+kotlin/src/cpp/Glibm2.kt vs new Glibm2.kt: 0 differing lines outside // comments
+groovy/src/cpp/Glibm.groovy vs new Glibm.groovy: 0 differing lines outside // comments
+groovy/src/cpp/Glibm2.groovy vs new Glibm2.groovy: 0 differing lines outside // comments
+# the JavaScript files the new back end writes, against js/src/cpp/libm
+js/src/cpp/libm/glibm.js: identical to the regenerated file
+js/src/cpp/libm/glibm2.js: identical to the regenerated file
+js/src/cpp/libm/glibm_rt.js: identical to the regenerated file
+js/src/cpp/libm/glibm2_rt.js: identical to the regenerated file

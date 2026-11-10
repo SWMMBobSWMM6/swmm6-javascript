@@ -1,0 +1,332 @@
+// algo.js - <algorithm> and <numeric> over vector / array iterators and pointers: the Algo class of the C# runtime
+// (cs/runtime/Misc.cs, the specification), with libstdc++'s order of comparisons and moves where it shows (unique,
+// lower_bound, min/max_element ties). Elements are copied as C#'s Elem<T>.Copy does, compared as
+// EqualityComparer<T>.Default and ordered by Less<T>.Fn (CtElem, containers.ts). An Iter is (a, i), a Ptr (a, o);
+// results are made with the runtime's own Iter / Ptr arithmetic, so they are what the C# operators give.
+// Overloaded C# names carry the parameter-code suffix the Go translator uses (fill_IterT_IterT_T, ...).
+// One difference from the C#: VecFrom / VecFromPtr give the new vector an element maker (C#: Elem<T>.Make, from
+// the static type), the source vector's when the iterator has its vector, else one the elements' values imply.
+// Checked against libstdc++ by tests/stdcheck (containercheck.mts, run_ts.sh).
+// Written by Claude (Anthropic) for the SWMM6 ports; see AI-USE.md.
+import * as cpp from './index.js';
+import { CtElem } from './containers.js';
+
+
+
+/** A long index as a number. */
+function ix(x) { return typeof x === 'number' ? x : Number(x); }
+
+function iterAt(b, k) { return k === 0 ? b : cpp.Iter.op_Add(b, k); }
+
+/** The element maker of the new vector (C#'s new Vec<T>(): no explicit mk, Elem<T>.Make from the static type): the
+ *  source vector's element maker em when the iterator has its vector, else one from the element type as the values
+ *  show it. */
+function makerOf(b, sample) {
+	const v = b != null ? b.v : null;
+	if (v != null && typeof v.em === 'function') return v.em;
+	switch (typeof sample) {
+		case 'number': case 'bigint': return (() => 0);
+		case 'boolean': return (() => false);
+		case 'object':
+			if (sample instanceof cpp.Str) return (() => new cpp.Str());
+			return (() => null);
+		default: return (() => null);
+	}
+}
+
+export class Algo {
+	static fill_IterT_IterT_T(b, e, v) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		if (v === null || typeof v !== 'object') { for (let i = lo; i < hi; i++) a[i] = v; return; }
+		for (let i = lo; i < hi; i++) a[i] = CtElem.Copy(v);
+	}
+	static fill_PtrT_PtrT_T(b, e, v) {
+		const a = b.a, lo = ix(b.o), hi = ix(e.o);
+		for (let i = lo; i < hi; i++) a[i] = CtElem.Copy(v);
+	}
+	static fill_n_IterT_ul_T(b, n, v) {
+		const a = b.a, o = ix(b.i), m = ix(n);
+		for (let i = 0; i < m; i++) a[o + i] = CtElem.Copy(v);
+		return cpp.Iter.op_Add(b, m);
+	}
+	static fill_n_PtrT_ul_T(b, n, v) {
+		const a = b.a, o = ix(b.o), m = ix(n);
+		for (let i = 0; i < m; i++) a[o + i] = CtElem.Copy(v);
+		return cpp.Ptr.op_Add_PtrT_l(b, m);
+	}
+
+	static any_of(b, e, f) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) if (f(a[i])) return true;
+		return false;
+	}
+	static all_of(b, e, f) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) if (!f(a[i])) return false;
+		return true;
+	}
+	static none_of(b, e, f) { return !Algo.any_of(b, e, f); }
+	static find(b, e, v) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		for (let i = lo; i < hi; i++) if (CtElem.Eq(a[i], v)) return iterAt(b, i - lo);
+		return e;
+	}
+	static find_if(b, e, f) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		for (let i = lo; i < hi; i++) if (f(a[i])) return iterAt(b, i - lo);
+		return e;
+	}
+	static find_if_not(b, e, f) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		for (let i = lo; i < hi; i++) if (!f(a[i])) return iterAt(b, i - lo);
+		return e;
+	}
+	static count(b, e, v) {
+		const a = b.a, hi = ix(e.i);
+		let n = 0;
+		for (let i = ix(b.i); i < hi; i++) if (CtElem.Eq(a[i], v)) n++;
+		return n;
+	}
+	static count_if(b, e, f) {
+		const a = b.a, hi = ix(e.i);
+		let n = 0;
+		for (let i = ix(b.i); i < hi; i++) if (f(a[i])) n++;
+		return n;
+	}
+
+	static accumulate_Iterd_Iterd_d(b, e, init) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) init = init + a[i];
+		return init;
+	}
+	static accumulate_Iteri_Iteri_i(b, e, init) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) init = (init + a[i]) | 0;
+		return init;
+	}
+	static accumulate_Iterl_Iterl_l(b, e, init) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) init = cpp.L.addL(init, a[i]);
+		return init;
+	}
+	static accumulate_Iteri_Iteri_d(b, e, init) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) init = init + a[i];
+		return init;
+	}
+	static accumulate_Iterul_Iterul_ul(b, e, init) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) init = cpp.L.addUL(init, a[i]);
+		return init;
+	}
+	static accumulate_IterT_IterT_A_FuncATA(b, e, init, op) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) init = op(init, a[i]);
+		return init;
+	}
+
+	static lower_bound_IterT_IterT_T(b, e, v) {
+		return Algo.lower_bound_IterT_IterT_T_FuncTTb(b, e, v, CtElem.Less);
+	}
+	static lower_bound_IterT_IterT_T_FuncTTb(b, e, v, lt) {
+		const a = b.a, lo = ix(b.i);
+		let first = lo, len = ix(e.i) - lo;
+		while (len > 0) {
+			const half = Math.floor(len / 2), mid = first + half;
+			if (lt(a[mid], v)) { first = mid + 1; len = len - half - 1; } else len = half;
+		}
+		return iterAt(b, first - lo);
+	}
+	static lower_bound_IterT_IterT_V_FuncTVb(b, e, v, lt) {
+		const a = b.a, lo = ix(b.i);
+		let first = lo, len = ix(e.i) - lo;
+		while (len > 0) {
+			const half = Math.floor(len / 2), mid = first + half;
+			if (lt(a[mid], v)) { first = mid + 1; len = len - half - 1; } else len = half;
+		}
+		return iterAt(b, first - lo);
+	}
+	static upper_bound_IterT_IterT_T(b, e, v) {
+		return Algo.upper_bound_IterT_IterT_T_FuncTTb(b, e, v, CtElem.Less);
+	}
+	static upper_bound_IterT_IterT_T_FuncTTb(b, e, v, lt) {
+		const a = b.a, lo = ix(b.i);
+		let first = lo, len = ix(e.i) - lo;
+		while (len > 0) {
+			const half = Math.floor(len / 2), mid = first + half;
+			if (lt(v, a[mid])) len = half; else { first = mid + 1; len = len - half - 1; }
+		}
+		return iterAt(b, first - lo);
+	}
+	static upper_bound_IterT_IterT_V_FuncVTb(b, e, v, lt) {
+		const a = b.a, lo = ix(b.i);
+		let first = lo, len = ix(e.i) - lo;
+		while (len > 0) {
+			const half = Math.floor(len / 2), mid = first + half;
+			if (lt(v, a[mid])) len = half; else { first = mid + 1; len = len - half - 1; }
+		}
+		return iterAt(b, first - lo);
+	}
+	static binary_search(b, e, v) {
+		const it = Algo.lower_bound_IterT_IterT_T(b, e, v);
+		return it.i != e.i && !CtElem.Less(v, it.a[ix(it.i)]);
+	}
+	/** std::is_sorted: no element is less than the one before it. */
+	static is_sorted_IterT_IterT(b, e) {
+		return Algo.is_sorted_IterT_IterT_FuncTTb(b, e, CtElem.Less);
+	}
+	static is_sorted_IterT_IterT_FuncTTb(b, e, lt) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i) + 1; i < hi; i++) if (lt(a[i], a[i - 1])) return false;
+		return true;
+	}
+	static adjacent_find_IterT_IterT(b, e) {
+		return Algo.adjacent_find_IterT_IterT_FuncTTb(b, e, CtElem.Eq);
+	}
+	static adjacent_find_IterT_IterT_FuncTTb(b, e, eq) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		for (let i = lo; i + 1 < hi; i++) if (eq(a[i], a[i + 1])) return iterAt(b, i - lo);
+		return e;
+	}
+	/** std::unique: keeps the first of each run of equal elements (libstdc++'s order of moves). */
+	static unique_IterT_IterT(b, e) {
+		return Algo.unique_IterT_IterT_FuncTTb(b, e, CtElem.Eq);
+	}
+	static unique_IterT_IterT_FuncTTb(b, e, eq) {
+		const a = b.a, lo = ix(b.i), last = ix(e.i);
+		if (lo === last) return e;
+		let first = lo, nxt = first;
+		while (++nxt !== last) { if (eq(a[first], a[nxt])) break; first = nxt; }      // adjacent_find
+		if (nxt === last) return e;
+		let dest = first;
+		first = nxt;
+		while (++first !== last) if (!eq(a[dest], a[first])) a[++dest] = a[first];
+		return iterAt(b, dest + 1 - lo);
+	}
+	static remove_if(b, e, f) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		let first = lo;
+		while (first !== hi && !f(a[first])) first++;
+		if (first === hi) return e;
+		let r = first;
+		for (let i = first + 1; i !== hi; i++) if (!f(a[i])) a[r++] = a[i];
+		return iterAt(b, r - lo);
+	}
+	static remove(b, e, v) { return Algo.remove_if(b, e, (x) => CtElem.Eq(x, v)); }
+	static max_element_IterT_IterT(b, e) {
+		return Algo.max_element_IterT_IterT_FuncTTb(b, e, CtElem.Less);
+	}
+	static max_element_IterT_IterT_FuncTTb(b, e, lt) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		if (lo === hi) return e;
+		let best = lo;
+		for (let i = lo + 1; i < hi; i++) if (lt(a[best], a[i])) best = i;
+		return iterAt(b, best - lo);
+	}
+	static min_element_IterT_IterT(b, e) {
+		return Algo.min_element_IterT_IterT_FuncTTb(b, e, CtElem.Less);
+	}
+	static min_element_IterT_IterT_FuncTTb(b, e, lt) {
+		const a = b.a, lo = ix(b.i), hi = ix(e.i);
+		if (lo === hi) return e;
+		let best = lo;
+		for (let i = lo + 1; i < hi; i++) if (lt(a[i], a[best])) best = i;
+		return iterAt(b, best - lo);
+	}
+
+	static copy_IterT_IterT_IterT(b, e, o) {
+		const a = b.a, d = o.a, lo = ix(b.i), hi = ix(e.i), oo = ix(o.i);
+		for (let i = lo; i < hi; i++) d[oo + (i - lo)] = CtElem.Copy(a[i]);
+		return cpp.Iter.op_Add(o, hi - lo);
+	}
+	static copy_IterT_IterT_PtrT(b, e, o) {
+		const a = b.a, d = o.a, lo = ix(b.i), hi = ix(e.i), oo = ix(o.o);
+		for (let i = lo; i < hi; i++) d[oo + (i - lo)] = CtElem.Copy(a[i]);
+		return cpp.Ptr.op_Add_PtrT_l(o, hi - lo);
+	}
+	static copy_PtrT_PtrT_PtrT(b, e, o) {
+		const a = b.a, d = o.a, lo = ix(b.o), hi = ix(e.o), oo = ix(o.o);
+		for (let i = lo; i < hi; i++) d[oo + (i - lo)] = CtElem.Copy(a[i]);
+		return cpp.Ptr.op_Add_PtrT_l(o, hi - lo);
+	}
+	static copy_PtrT_PtrT_IterT(b, e, o) {
+		const a = b.a, d = o.a, lo = ix(b.o), hi = ix(e.o), oo = ix(o.i);
+		for (let i = lo; i < hi; i++) d[oo + (i - lo)] = CtElem.Copy(a[i]);
+		return cpp.Iter.op_Add(o, hi - lo);
+	}
+	static copy_n_IterT_ul_IterT(b, n, o) {
+		return Algo.copy_IterT_IterT_IterT(b, cpp.Iter.op_Add(b, ix(n)), o);
+	}
+	static copy_n_PtrT_ul_PtrT(b, n, o) {
+		return Algo.copy_PtrT_PtrT_PtrT(b, cpp.Ptr.op_Add_PtrT_l(b, ix(n)), o);
+	}
+	/** transform over a string's bytes with a function returning int (::toupper and lambdas around it): each
+	 *  result is stored as a char, as the C++ assignment converts it. */
+	static transform_Iteruc_Iteruc_Iteruc_Funcuci(b, e, o, f) {
+		const a = b.a, d = o.a, lo = ix(b.i), hi = ix(e.i), oo = ix(o.i);
+		for (let i = lo; i < hi; i++) d[oo + (i - lo)] = f(a[i]) & 0xff;
+		return cpp.Iter.op_Add(o, hi - lo);
+	}
+	static transform_Iteruc_Iteruc_Iteruc_Funcucc(b, e, o, f) {
+		const a = b.a, d = o.a, lo = ix(b.i), hi = ix(e.i), oo = ix(o.i);
+		for (let i = lo; i < hi; i++) d[oo + (i - lo)] = f(a[i]) & 0xff;
+		return cpp.Iter.op_Add(o, hi - lo);
+	}
+	static transform_IterT_IterT_IterU_FuncTU(b, e, o, f) {
+		const a = b.a, d = o.a, lo = ix(b.i), hi = ix(e.i), oo = ix(o.i);
+		for (let i = lo; i < hi; i++) d[oo + (i - lo)] = f(a[i]);
+		return cpp.Iter.op_Add(o, hi - lo);
+	}
+	static replace(b, e, old, nw) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) if (CtElem.Eq(a[i], old)) a[i] = nw;
+	}
+	static reverse(b, e) {
+		const a = b.a;
+		for (let i = ix(b.i), j = ix(e.i) - 1; i < j; i++, j--) { const t = a[i]; a[i] = a[j]; a[j] = t; }
+	}
+	static iota_Iteri_Iteri_i(b, e, v) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) { a[i] = v; v = (v + 1) | 0; }
+	}
+	static iota_Iterul_Iterul_ul(b, e, v) {
+		const a = b.a, hi = ix(e.i);
+		for (let i = ix(b.i); i < hi; i++) { a[i] = v; v = cpp.L.incUL(v); }
+	}
+	static equal(b, e, b2) {
+		const a = b.a, a2 = b2.a, lo = ix(b.i), hi = ix(e.i), o2 = ix(b2.i);
+		for (let i = lo; i < hi; i++) if (!CtElem.Eq(a[i], a2[o2 + (i - lo)])) return false;
+		return true;
+	}
+	static distance_IterT_IterT(a, b) { return ix(b.i) - ix(a.i); }
+	static distance_PtrT_PtrT(a, b) { return ix(b.o) - ix(a.o); }
+	static next(a, n = 1) { return cpp.Iter.op_Add(a, n); }
+	static prev(a, n = 1) { return cpp.Iter.op_Sub_IterT_l(a, n); }
+
+	/** std::vector<T>(b, e): a new vector holding copies of the range. */
+	static VecFrom(b, e) {
+		const src = b.a, lo = ix(b.i), m = ix(e.i) - lo;
+		const v = new cpp.Vec(makerOf(b, m > 0 ? src[lo] : undefined));
+		const arr = new Array(m);
+		for (let i = 0; i < m; i++) arr[i] = CtElem.Copy(src[lo + i]);
+		(v).a = arr;
+		v.n = m;
+		return v;
+	}
+	static VecFromPtr(b, e) {
+		const src = b.a, lo = ix(b.o), m = ix(e.o) - lo;
+		const v = new cpp.Vec(makerOf(null, m > 0 ? src[lo] : undefined));
+		const arr = new Array(m);
+		for (let i = 0; i < m; i++) arr[i] = CtElem.Copy(src[lo + i]);
+		(v).a = arr;
+		v.n = m;
+		return v;
+	}
+	static begin_VecT(v) { return v.begin(); }
+	static end_VecT(v) { return v.end(); }
+	static begin_TA(a) { return cpp.Iter.new_TA_l(a, 0); }
+	static end_TA(a) { return cpp.Iter.new_TA_l(a, a.length); }
+	static size_VecT(v) { return v.size(); }
+	static size_TA(a) { return a.length; }
+}
+// (ts/src/cpp/algo.ts without its TypeScript types, written by js/tools/ts2js.mjs; see js/README.md.)

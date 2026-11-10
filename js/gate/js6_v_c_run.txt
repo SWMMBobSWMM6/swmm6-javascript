@@ -1,0 +1,16 @@
+2026-11-10T06:55:43  nice -n 10 python3 gate.py js6_v_c /dev/shm/js6_v/repo/js/runswmm6_saves.sh --ids /dev/shm/js6_v_c_y9cim63w.txt -j 1 --timeout 1800 --prune --resume
+js6_v_c: 57 models  PASS 57
+2026-11-10T07:04:51  nice -n 10 python3 gate.py js6_v_c /dev/shm/js6_v/repo/js/runswmm6_saves.sh --ids /dev/shm/js6_v_c_qzsg2j1v.txt -j 1 --timeout 1800 --prune --resume
+js6_v_c: resuming, 0 models already done, 30 to run
+js6_v_c: 30 models  PASS 30
+2026-11-10T07:12:12  stopping for time: 74 models left, the next batch (62, about 549 s) would end after the deadline
+2026-11-10T08:55:50  stopping for time: 74 models left, the next batch (62, about 549 s) would end after the deadline
+2026-11-10T09:30:45  nice -n 10 python3 gate.py js6_v_c /dev/shm/js6_v/repo/js/runswmm6_saves.sh --ids /dev/shm/js6_v_c_ot7slbfq.txt -j 1 --timeout 1800 --prune --resume
+js6_v_c: resuming, 0 models already done, 62 to run
+js6_v_c: 62 models  PASS 62
+2026-11-10T09:35:27  nice -n 10 python3 gate.py js6_v_c /dev/shm/js6_v/repo/js/runswmm6_saves.sh --ids /dev/shm/js6_v_c_ds9o723y.txt -j 1 --timeout 1800 --prune --resume
+js6_v_c: resuming, 0 models already done, 12 to run
+js6_v_c: 12 models  PASS 12
+2026-11-10T09:36:21  nice -n 10 python3 gate.py js6_v_c /dev/shm/js6_v/repo/js/runswmm6_saves.sh --ids /home/claude/swmm6-ports/js/gate/ids_corpus_c.txt -j 1 --timeout 1800 --prune --resume
+js6_v_c: resuming, 161 models already done, 0 to run
+js6_v_c: 161 models  PASS 161
